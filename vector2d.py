@@ -131,6 +131,20 @@ class Vector2D:
             raise TypeError("Multiplication is possible only by a scalar (int or float data type)")
         return Vector2D(self.x * scalar, self.y * scalar)
 
+    def __rmul__(self, scalar):
+        """Provides the ability to multiply if the arguments are reversed.
+
+        Args:
+            scalar (int | float): scalar by which the vector will be multiplied.
+
+        Returns:
+            Vector2D(x, y): new Vector2D object.
+
+        Raises:
+            TypeError: Occurs if the argument is not an int or float data type.
+        """
+        return self.__mul__(scalar)
+
     def __eq__(self, other) -> bool:
         """Equalizes coordinates of two Vector2D objects.
 
