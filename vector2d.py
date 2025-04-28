@@ -6,17 +6,18 @@ Features:
 - Magnitude (length) calculation
 - Unit vector generation
 - Dot product calculation
+- Calculation of angle between two vectors
 
 The class includes error handling for invalid operations and type checking.
 """
-
-from math import sqrt
+from math import sqrt, acos
 
 class Vector2D:
     """Vector2D class for creating and working with 2D vectors.
 
     Class supports basic arithmetic operations,
-    scalar multiplication and calculating vector length
+    scalar multiplication, generating unit vector,
+    calculating vector length and angle between two vectors.
     """
     def __init__(self, x: int | float, y: int | float):
         """Init method of Vector2D class.
@@ -176,7 +177,7 @@ class Vector2D:
             Vector2D(x, y): new Vector2D object.
 
         Raises:
-            ValueError: Occurs if coordinates of the Vector2D object are zero.
+            ValueError: Occurs if the magnitude of the Vector2D object is zero.
         """
         mag = self.mag()
         if mag == 0:
@@ -199,7 +200,26 @@ class Vector2D:
             raise TypeError("Dot product is possible only for two Vector2D objects")
         return self.x * other.x + self.y * other.y
 
+    def angle(self, other) -> float:
+        """Calculates the angle in radians between two Vector2D objects.
 
+        Args:
+            other (Vector2D): other Vector2D object.
+
+        Returns:
+            float: Angle in radians between two vectors.
+
+        Raises:
+            TypeError: Occurs if the argument is not a Vector2D object.
+            ValueError: Occurs if the magnitude of the Vector2D object is zero.
+        """
+        if not isinstance(other, Vector2D):
+            raise TypeError("Angle between vectors is possible only for two Vector2D objects")
+        mag1 = self.mag()
+        mag2 = other.mag()
+        if mag1 == 0 or mag2 == 0:
+            raise ValueError("There is no angle if one of the vectors is zero vector")
+        return acos(self.dot(other) / (mag1 * mag2))
 
 if __name__ == "__main__":
     vect1 = Vector2D(2, 3)
