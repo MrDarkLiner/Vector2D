@@ -1,11 +1,22 @@
+"""This module provides a `Vector2D` class for creating and working with 2D vectors.
+
+Features:
+- Basic arithmetic operations: addition, subtraction
+- Scalar multiplication
+- Magnitude (length) calculation
+- Unit vector generation
+- Dot product calculation
+
+The class includes error handling for invalid operations and type checking.
+"""
+
 from math import sqrt
 
 class Vector2D:
     """Vector2D class for creating and working with 2D vectors.
 
-    Attributes:
-        _x (int | float): X coordinate of vector.
-        _y (int | float): Y coordinate of vector.
+    Class supports basic arithmetic operations,
+    scalar multiplication and calculating vector length
     """
     def __init__(self, x: int | float, y: int | float):
         """Init method of Vector2D class.
@@ -18,9 +29,9 @@ class Vector2D:
             TypeError: Occurs if the arguments types are incorrect.
         """
         if not isinstance(x, (int, float)):
-            raise TypeError("Attribute 'x' is not an int or float data type")
+            raise TypeError("Argument 'x' is not an int or float data type")
         if not isinstance(y, (int, float)):
-            raise TypeError("Attribute 'y' is not an int or float data type")
+            raise TypeError("Argument 'y' is not an int or float data type")
         self._x = float(x)
         self._y = float(y)
 
