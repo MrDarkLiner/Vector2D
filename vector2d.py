@@ -223,14 +223,32 @@ class Vector2D:
 
 if __name__ == "__main__":
     vect1 = Vector2D(2, 3)
-    print(vect1)
+    vect2 = Vector2D(4, 0)
+    print(f"vect1, __str__: {vect1}\nvect2, __str__: {vect2}")
 
-    vect2 = Vector2D(3, 5)
-    print(vect1 + vect2)
-    print(vect1 - vect2)
-    print(vect1 * 3)
-    print(vect1 == vect2)
+    print(f"vect1 + vect2, __add__: {vect1 + vect2}")
+    print(f"vect1 - vect2, __sub__: {vect1 - vect2}")
+    print(f"vect1 * 3, __mul__: {vect1 * 3}")
+    print(f"3 * vect1, __rmul__: {3 * vect1}")
+    print(f"vect1 == vect2, __eq__: {vect1 == vect2}")
 
-    print(vect1.mag())
-    print(vect1.unit())
-    print(vect1.dot(vect2))
+    print(f"vect1 magnitude, mag(): {vect1.mag()}")
+    print(f"vect1 unit, unit(): {vect1.unit()}")
+    print(f"vect1 and vect2 dot product, dot(): {vect1.dot(vect2)}")
+    print(f"vect1 and vect2 angle, angle(): {vect1.angle(vect2)}", end="\n\n")
+
+    try:
+        # noinspection PyTypeChecker
+        vect3 = Vector2D("a", 2)
+    except TypeError as e:
+        print(e)
+    try:
+        # noinspection PyTypeChecker
+        print(vect1 + 3)
+    except TypeError as e:
+        print(e)
+    try:
+        # noinspection PyTypeChecker
+        print(vect1.dot("a"))
+    except TypeError as e:
+        print(e)
