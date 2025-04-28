@@ -43,10 +43,45 @@ class Vector2D:
         """
         return f"{{'x': {self._x}, 'y': {self._y}}}"
 
-    def get_x(self) -> float:
+    @property
+    def x(self) -> float:
+        """Provides access to the x attribute.
+
+        Returns:
+             float: X coordinate of vector.
+        """
         return self._x
-    def get_y(self) -> float:
+
+    @x.setter
+    def x(self, value: int | float):
+        """Sets a new value for the x attribute
+
+        Args:
+            value (int | float): new value of x attribute
+        """
+        if not isinstance(value, (int, float)):
+            raise TypeError("Argument is not an int or float data type")
+        self._x = float(value)
+
+    @property
+    def y(self) -> float:
+        """Provides access to the y attribute.
+
+        Returns:
+            float: X coordinate of vector.
+        """
         return self._y
+
+    @y.setter
+    def y(self, value: int | float):
+        """Sets a new value for the y attribute
+
+        Args:
+            value (int | float): new value of y attribute
+        """
+        if not isinstance(value, (int, float)):
+            raise TypeError("Argument is not an int or float data type")
+        self._y = float(value)
 
     def __add__(self, other):
         """Adds coordinates of two Vector2D objects.
@@ -62,7 +97,8 @@ class Vector2D:
         """
         if not isinstance(other, Vector2D):
             raise TypeError("Addition is possible only for two Vector2D objects")
-        return Vector2D(self._x + other.get_x(), self._y + other.get_y())
+        return Vector2D(self.x + other.x, self.y + other.y)
+
     def __sub__(self, other):
         """Subtracts coordinates of two Vector2D objects.
 
@@ -77,7 +113,8 @@ class Vector2D:
         """
         if not isinstance(other, Vector2D):
             raise TypeError("Subtraction is possible only for two Vector2D objects")
-        return Vector2D(self._x - other.get_x(), self._y - other.get_y())
+        return Vector2D(self.x - other.x, self.y - other.y)
+
     def __mul__(self, scalar):
         """Multiplies coordinates of a Vector2D object by a scalar.
 
@@ -92,7 +129,8 @@ class Vector2D:
         """
         if not isinstance(scalar, (int, float)):
             raise TypeError("Multiplication is possible only by a scalar (int or float data type)")
-        return Vector2D(self._x * scalar, self._y * scalar)
+        return Vector2D(self.x * scalar, self.y * scalar)
+
     def __eq__(self, other) -> bool:
         """Equalizes coordinates of two Vector2D objects.
 
@@ -107,7 +145,7 @@ class Vector2D:
         """
         if not isinstance(other, Vector2D):
             raise TypeError("Equation is possible only for two Vector2D objects")
-        return self._x == other.get_x() and self._y == other.get_y()
+        return self.x == other.x and self.y == other.y
 
     def mag(self) -> float:
         """Calculates the magnitude of a Vector2D object.
@@ -115,7 +153,7 @@ class Vector2D:
         Returns:
             float: Magnitude of vector.
         """
-        return sqrt(self._x ** 2 + self._y ** 2)
+        return sqrt(self.x ** 2 + self.y ** 2)
 
     def unit(self):
         """Calculates the unit vector of a Vector2D object.
@@ -129,7 +167,7 @@ class Vector2D:
         mag = self.mag()
         if mag == 0:
             raise ValueError("Zero vector cannot have a unit vector")
-        return Vector2D(self._x / mag, self._y / mag)
+        return Vector2D(self.x / mag, self.y / mag)
 
     def dot(self, other) -> float:
         """Calculates the dot product of two Vector2D objects.
@@ -145,7 +183,8 @@ class Vector2D:
         """
         if not isinstance(other, Vector2D):
             raise TypeError("Dot product is possible only for two Vector2D objects")
-        return self._x * other.get_x() + self._y * other.get_y()
+        return self.x * other.x + self.y * other.y
+
 
 
 if __name__ == "__main__":
