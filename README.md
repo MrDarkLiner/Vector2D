@@ -11,6 +11,7 @@ A simple Python module for 2D vector operations such as addition, subtraction, s
 - Calculate the magnitude (length) of a vector
 - Generate the unit (normalized) vector
 - Compute the dot product of two vectors
+- Calculate angle between two vectors
 
 ## Installation
 
@@ -39,11 +40,12 @@ from vector2d import Vector2D
 - `mag() -> float`: Returns the magnitude of the vector.
 - `unit() -> Vector2D`: Returns the unit vector (vector with magnitude 1).
 - `dot(other: Vector2D) -> float`: Calculates the dot product of two vectors.
+- `angle(other: Vector2D) -> float`: Calculates the angle between two vectors
 
 ## Error Handling
 
-- Raises TypeError if incorrect types are passed to methods.
-- Raises ValueError when trying to create a unit vector for a zero-magnitude vector.
+- Raises `TypeError` if incorrect types are passed to methods.
+- Raises `ValueError` when trying to create a unit vector for a zero-magnitude vector.
 
 ## Usage
 
@@ -68,11 +70,14 @@ print(vect1 * 3)  # Output: {'x': 6.0, 'y': 9.0}
 print(vect1 == vect2)  # Output: False
 
 # Vector magnitude
-print(vect1.mag())  # Output: 3.605551275463989
+print(vect1.mag())  # Output: 3.6055...
 
 # Unit vector
 print(vect1.unit())  # Output: {'x': 0.5547..., 'y': 0.8320...}
 
 # Dot product
 print(vect1.dot(vect2))  # Output: 21.0
+
+# Angle between vectors
+print(vect1.angle(vect2))  # Output: 0.0475...
 ```
