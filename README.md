@@ -1,6 +1,6 @@
 # Vector2D Module
 
-A Python module for creating and manipulating 2D vectors. Supports vector addition, subtraction, scalar multiplication, magnitude calculation, unit vector generation, dot product computation and angle calculation.
+A Python module for creating and manipulating 2D vectors. It provides simple methods for performing common vector operations in 2D space, making it useful for geometric and mathematical applications.
 
 ## Features
 
